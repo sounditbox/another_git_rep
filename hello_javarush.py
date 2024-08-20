@@ -1,1 +1,1 @@
-print('Hello PythonRush!')
+print('Hello Python Crush!')
