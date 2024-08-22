@@ -1,2 +1,2 @@
 print("Hello, Ruslan! Thanks for the lesson!")
-print("Something else")
+print("А теперь на итальянском 🙃\nGrazie mille per i compiti aggiuntivi!")
