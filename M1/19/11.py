@@ -30,4 +30,3 @@ class DoubleHashingHashTable:
                 return None  # Пройден весь массив
 
         return None
-

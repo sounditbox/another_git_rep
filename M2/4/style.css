@@ -1,0 +1,13 @@
+.box {
+    width: 200px;
+    padding: 10px;
+    border: 2px solid red;
+    margin: 20px;
+}
+
+.box:hover {
+    width: 200px;
+    padding: 10px;
+    border: 20px solid green;
+    margin: 20px;
+}

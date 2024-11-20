@@ -1,0 +1,23 @@
+h2 {
+    color:pink
+}
+
+.red-big-text {
+    color:red;
+    font-size:42px
+}
+
+p.green-small-text {
+    color:green;
+    font-size:12px
+}
+
+h5.green-small-text {
+    color:green;
+    font-size:23px
+}
+
+.important {
+    font-weight: bold;
+    color: red;
+}
