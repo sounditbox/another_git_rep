@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+websockets
+pydantic
+openai
+python-dotenv
+loguru
+prometheus-fastapi-instrumentator

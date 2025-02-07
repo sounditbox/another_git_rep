@@ -1,0 +1,55 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    ports:
+      - "8000:8000"
+    networks:
+      - network
+    volumes:
+      - ./backend:/app
+      - backend_logs:/app/logs
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "80:80"
+    networks:
+      - network
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - network
+    depends_on:
+      - backend
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - network
+    depends_on:
+      - prometheus
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  backend_logs:
+    driver: local

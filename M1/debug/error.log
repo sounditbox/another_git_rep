@@ -1,0 +1,44 @@
+ERROR:root:Произошло исключение:
+Traceback (most recent call last):
+  File "D:\_\work\PythonRush2\debug\3.py", line 19, in function_a
+    function_b()
+  File "D:\_\work\PythonRush2\debug\3.py", line 14, in function_b
+    function_c()
+  File "D:\_\work\PythonRush2\debug\3.py", line 10, in function_c
+    return 1 / 0  # Это вызовет ZeroDivisionError
+           ~~^~~
+ZeroDivisionError: division by zero
+
+ERROR:root:Произошло исключение:
+Traceback (most recent call last):
+  File "D:\_\work\PythonRush2\debug\3.py", line 19, in function_a
+    function_b()
+  File "D:\_\work\PythonRush2\debug\3.py", line 14, in function_b
+    function_c()
+  File "D:\_\work\PythonRush2\debug\3.py", line 10, in function_c
+    return 1 / 0  # Это вызовет ZeroDivisionError
+           ~~^~~
+ZeroDivisionError: division by zero
+
+ERROR:root:Произошло исключение:
+Traceback (most recent call last):
+  File "D:\_\work\PythonRush2\debug\3.py", line 19, in function_a
+    function_b()
+  File "D:\_\work\PythonRush2\debug\3.py", line 14, in function_b
+    function_c()
+  File "D:\_\work\PythonRush2\debug\3.py", line 10, in function_c
+    return 1 / 0  # Это вызовет ZeroDivisionError
+           ~~^~~
+ZeroDivisionError: division by zero
+
+ERROR:root:Произошло исключение:
+Traceback (most recent call last):
+  File "D:\_\work\PythonRush2\debug\3.py", line 19, in function_a
+    function_b()
+  File "D:\_\work\PythonRush2\debug\3.py", line 14, in function_b
+    function_c()
+  File "D:\_\work\PythonRush2\debug\3.py", line 10, in function_c
+    return 1 / 0  # Это вызовет ZeroDivisionError
+           ~~^~~
+ZeroDivisionError: division by zero
+

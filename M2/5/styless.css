@@ -1,0 +1,20 @@
+
+/* Значение по умолчанию */
+:root {
+    --default-color: #2196f3; /* Задаем цвет по умолчанию */
+}
+h1 {
+    color: var(--main-color, var(--default-color));
+    /* Если --main-color не определена, используем --default-color */
+}
+/* Каскадирование */
+:root {
+    --text-color: #000; /* Задаем цвет текста по умолчанию */
+}
+body {
+    font-family: 'Cormorant Infant';
+    color: var(--text-color); /* Используем цвет текста по умолчанию */
+}
+.dark-theme {
+    --text-color: #fff; /* Переопределяем цвет текста для темной темы */
+}
