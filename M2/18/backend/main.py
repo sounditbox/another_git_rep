@@ -15,10 +15,7 @@ gpt.set_prompt('Ты - самый лучший и полезный ассист�
 
 
 origins = [
-    "http://localhost",
-    "http://localhost:80",
-    "http://127.0.0.1",
-    "http://127.0.0.1:3000"
+    '*'
 ]
 app.add_middleware(
     CORSMiddleware,

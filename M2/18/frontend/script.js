@@ -1,4 +1,4 @@
-const websocket = new WebSocket('ws://localhost:8000/ws');
+const websocket = new WebSocket('ws://ip172-18-0-72-cuj255aim2rg00cie29g.direct.labs.play-with-docker.com:8000/ws');
 
 const chat = document.getElementById('chat');
 const input = document.getElementById('message');
@@ -80,7 +80,7 @@ function addMessage(text, sender) {
 
 
 function changeVersion(newVersion) {
-    fetch('http://127.0.0.1:8000/set_version', {
+    fetch('http://ip172-18-0-72-cuj255aim2rg00cie29g.direct.labs.play-with-docker.com:8000/set_version', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -102,7 +102,7 @@ function changeVersion(newVersion) {
     .catch(error => console.error("Ошибка при смене версии:", error));
 }
 
-fetch('http://127.0.0.1:8000/versions')
+fetch('http://ip172-18-0-72-cuj255aim2rg00cie29g.direct.labs.play-with-docker.com:8000/versions')
     .then(response => {
         if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
         return response.json();
