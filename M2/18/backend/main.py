@@ -1,10 +1,11 @@
-from fastapi import FastAPI, WebSocket
+import os
+
+from dotenv import load_dotenv
+from fastapi import FastAPI, WebSocket, HTTPException
+from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
 
 from gpt import ChatGptService
-
-from dotenv import load_dotenv
-import os
 
 app = FastAPI()
 load_dotenv()
@@ -53,4 +54,26 @@ async def get_versions():
         'versions': ["gpt-3.5-turbo",
                      'gpt-4o', 'gpt-4-turbo', 'gpt-3.5-turbo',
                      'GPT-4o mini']
+    }
+
+
+class VersionRequest(BaseModel):
+    version: str
+
+
+@app.post("/set_version")
+async def set_version(version_request: VersionRequest):
+    global selected_version
+    if version_request.version not in ["gpt-3.5-turbo", "gpt-4o", "gpt-4-turbo",
+                                       "GPT-4o mini"]:
+        raise HTTPException(status_code=400, detail="Неверная версия модели")
+
+    selected_version = version_request.version
+    return {"message": f"Версия успешно изменена на {selected_version}"}
+
+
+@app.get("/versions")
+async def get_versions():
+    return {
+        'versions': ["gpt-3.5-turbo", "gpt-4o", "gpt-4-turbo", "GPT-4o mini"]
     }

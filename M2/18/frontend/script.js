@@ -37,6 +37,7 @@ const botImgSrc = 'https://upload.wikimedia.org/wikipedia/commons/1/13/ChatGPT-L
 const userImgSrc = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp';
 const botMsgClassList = ['small', 'p-2', 'ms-3', 'mb-1', 'rounded-3', 'bg-body-tertiary']
 const userMsgClassList = ['small', 'p-2', 'me-3', 'mb-1', 'text-white', 'rounded-3', 'bg-primary']
+const botVersionButton = document.getElementById('botVersion');
 
 
 function addMessage(text, sender) {
@@ -75,21 +76,57 @@ function addMessage(text, sender) {
 
     chat.appendChild(messageContainer);
 }
+
+
+
+function changeVersion(newVersion) {
+    fetch('http://127.0.0.1:8000/set_version', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ version: newVersion })
+    })
+    .then(response => {
+        if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
+        return response.json();
+    })
+    .then(data => {
+        console.log("Версия успешно изменена:", data);
+        botVersionButton.innerText = newVersion;
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        document.querySelector(`.dropdown-item[data-version="${newVersion}"]`).classList.add('active');
+    })
+    .catch(error => console.error("Ошибка при смене версии:", error));
+}
+
 fetch('http://127.0.0.1:8000/versions')
     .then(response => {
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
         return response.json();
     })
     .then(data => {
         console.log("Ответ сервера:", data);
         if (!data.versions) throw new Error("Поле 'versions' отсутствует в ответе сервера");
 
-        data.versions.forEach(item => {
+        data.versions.forEach((item, index) => {
             let li = document.createElement('li');
             let a = document.createElement('a');
+
             a.classList.add('dropdown-item');
-            a.innerHTML = item;
-            a.href = `/versions/${item}`;
+            a.href = "#";
+            a.innerText = item;
+            a.dataset.version = item;
+            if (index === 0) {
+                a.classList.add('active');
+            }
+            a.addEventListener('click', (event) => {
+                event.preventDefault();
+                changeVersion(item);
+            });
+
             li.appendChild(a);
             versionsList.appendChild(li);
         });
